@@ -36,7 +36,9 @@ from django.core.validators import MaxValueValidator, RegexValidator,ValidationE
 
 
 class Person(models.Model):
-    first_name = models.CharField(max_length=50)
+    #first_name = models.CharField(max_length=50)
+    firname = RegexValidator(regex=r'[a-zA-Z]+$')
+    first_name = models.CharField(validators=[firname], max_length=30, blank=True)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(null=True)
     #phone_number = models.CharField(max_length=13)
