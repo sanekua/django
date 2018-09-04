@@ -32,8 +32,11 @@ from my_project import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('univer/',include('my_project.urls')),
+    path('', include('my_project.urls')),
     path('', include('django.contrib.auth.urls')),
     # path('my_univer/', views.first_html_page, name="first_html_page"),
     # path('add_student/', views.add_student, name="add_student"),
     # path('add_teacher/', views.add_teacher, name="add_teacher")
 ]
+
+
