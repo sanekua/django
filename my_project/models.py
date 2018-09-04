@@ -39,18 +39,18 @@ class Person(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(null=True)
-    phone_number = models.CharField(max_length=13)
-#     phone_regex = RegexValidator(regex=r'^\+\d{9,13}$',
-#                                  message="Phone number must be entered in the format: '+999999999'.")
-#     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
+    #phone_number = models.CharField(max_length=13)
+    phone_regex = RegexValidator(regex=r'^\+\d{9,13}$',
+                                 message="Phone number must be entered in the format: '+999999999'.")
+    phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
 
-    def phone_validation(phone_number: str):
-        match = re.match(r'^\+\d{9,12}$', self.phone_number)
-        if not match:
-            print('Hello')
-            raise ValidationError('Enter correct number')
-
-        return match
+    # def phone_validation(phone_number: str):
+    #     match = re.match(r'^\+\d{9,12}$', self.phone_number)
+    #     if not match:
+    #         print('Hello')
+    #         raise ValidationError('Enter correct number')
+    #
+    #     return match
 
     class Meta:
         abstract = True
