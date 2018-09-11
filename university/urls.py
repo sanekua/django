@@ -29,6 +29,10 @@ from django.urls import path,include
 from django.contrib import admin
 from my_project import views
 
+from django.contrib.auth.decorators import login_required
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('univer/',include('my_project.urls')),

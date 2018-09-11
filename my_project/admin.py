@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 
 from django.contrib import admin
-from .models import Student, Teacher, Class, Question, Answer
+from .models import Student, Teacher, Class, Question, Answer,Quiz
 
 
 
@@ -24,5 +24,6 @@ class TeacherAdmin(admin.ModelAdmin):
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Class)
+admin.site.register(Quiz)
 admin.site.register(Question)
 admin.site.register(Answer)

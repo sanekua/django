@@ -1,14 +1,18 @@
 {% extends "my_project/base.html" %}
 {% block title %}
-Person creating forms: student and teacher
+Form to add student
 {% endblock %}
 
 {% block content %}
 <h1>Fill the following forms to add student</h1>
 
-{% if success %}
-    <b style="color: #447e9b">New student has been successfully added.</b>
-{% endif %}
+{% if messages %}
+    {% for m in messages %}
+        <p>{{m}}</p>
+    {% endfor %}
+<p><a href="{% url 'add_student' %}">Add another student</a></p>
+<p><a href="{% url 'index' %}">Back to the Main page</a></p>
+{% else %}
 <form action="/add_student/" method="post" >
     {% csrf_token %}
     {% for field in form %}
@@ -19,4 +23,5 @@ Person creating forms: student and teacher
     {% endfor %}
     <input type="submit" value="Create">
 </form>
+{% endif %}
 {% endblock %}

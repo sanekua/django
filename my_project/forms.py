@@ -1,14 +1,20 @@
 from django import forms
-from django.core.validators import RegexValidator
 from .models import Teacher, Student, Class
-import re
-from django.db import models
 
-class StudentForm(forms.Form):
-    first_name = forms.CharField(label="Student's first name", max_length=100)
-    last_name = forms.CharField(label="Student's last name", max_length=100)
-    email = forms.EmailField(label="Type in an email here")
 
-    # phone_regex = RegexValidator(regex=r'^\+\d{9,13}$',
-    #                              message="Phone number must be entered in the format: '+999999999'.")
-    # phone_number = forms.CharField(label="Type in a phone number here", validators=[phone_regex])
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['first_name', 'last_name', 'phone_number', 'email','avg_mark']
+
+
+class TeacherForm(forms.ModelForm):
+    class Meta:
+        model = Teacher
+        fields = ['first_name', 'last_name', 'phone_number', 'email', 'subject']
+
+
+class ClassForm(forms.ModelForm):
+    class Meta:
+        model = Class
+        fields = ['students', 'teacher', 'title']
